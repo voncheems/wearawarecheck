@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import './AboutUs.css';
 
@@ -46,11 +45,12 @@ function AboutUs({ setCurrentPage }) {
           <div className="logo-icon">🦺</div>
           <span>WearAware</span>
         </div>
-        <ul className="nav-links">
+        
+         <ul className="nav-links">
           <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>OUR PROJECTS</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>EXPERTISE</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>GET IN TOUCH</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>CONTACT</a></li>
         </ul>
       </nav>
 
