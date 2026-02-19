@@ -101,23 +101,20 @@ const loginStyles = `
     margin-bottom: 2rem;
   }
 
-.login-card-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-  transition: opacity 0.3s ease;
-  background: none;
-  border: none;
-}
+  .login-card-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s ease;
+    background: none;
+    border: none;
+  }
 
-.login-card-logo-icon { font-size: 3rem; }
-
+  .login-card-logo-icon { font-size: 3rem; }
   .login-card-logo:hover { opacity: 0.75; }
-
-
 
   .login-card-title {
     font-size: 2rem;
@@ -355,12 +352,47 @@ export default function LoginPage({ setCurrentPage }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) { setError('Please fill in all fields.'); return; }
+
     setError('');
     setLoading(true);
-    // TODO: swap with your Firebase signInWithEmailAndPassword call
-    await new Promise(r => setTimeout(r, 1500));
-    setLoading(false);
-    setError('Invalid credentials. Please try again.');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Login failed. Please try again.');
+      }
+
+      // Store token and user in localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      // Route to the correct dashboard based on role
+      switch (data.user.role) {
+        case 'admin':
+          setCurrentPage('admin');
+          break;
+        case 'inspector':
+          setCurrentPage('inspector');
+          break;
+        case 'scanner':
+          setCurrentPage('scanner');
+          break;
+        default:
+          throw new Error('Unknown role. Please contact your administrator.');
+      }
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -396,13 +428,12 @@ export default function LoginPage({ setCurrentPage }) {
 
             <div className="login-card">
               <div className="login-card-header">
-                {/* Clicking logo goes back to landing */}
-            <button
-                className="login-card-logo"
-                onClick={() => setCurrentPage('landing')}
+                <button
+                  className="login-card-logo"
+                  onClick={() => setCurrentPage('landing')}
                 >
-                <span className="login-card-logo-icon">🦺</span>
-            </button>
+                  <span className="login-card-logo-icon">🦺</span>
+                </button>
                 <h2 className="login-card-title">Sign In</h2>
                 <p className="login-card-subtitle">Access your safety dashboard</p>
               </div>
