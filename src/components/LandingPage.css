@@ -1,389 +1,199 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+import React, { useEffect } from 'react';
+import './LandingPage.css';
+
+function LandingPage({ setCurrentPage }) {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  }, []);
+
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  return (
+    <div className="landing-page">
+      {/* Navigation */}
+      <nav className="navbar">
+       <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
+           <div className="logo-icon">🦺</div>
+            <span>WearAware</span>
+        </div>
+        
+        <ul className="nav-links">
+          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
+          <li><a href="#expertise" onClick={(e) => handleSmoothScroll(e, '#expertise')}>EXPERTISE</a></li>
+          <li><a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>GET IN TOUCH</a></li>
+        </ul>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <div className="hero-subtitle">BUILT AT THE SPEED OF SAFETY</div>
+          <h1 className="hero-title">WORKPLACE'S<br/>TOP NOTCH<br/>SAFETY MONITOR</h1>
+          <p className="hero-description">
+            Revolutionizing workplace safety with AI-powered PPE detection and real-time compliance monitoring for construction sites and industrial facilities.
+          </p>
+          <div className="hero-buttons">
+            <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>GET STARTED</button>
+            <a href="#features" className="btn btn-secondary" onClick={(e) => handleSmoothScroll(e, '#features')}>LEARN MORE</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features fade-in" id="features">
+        <div className="section-header">
+          <div className="section-subtitle">WHAT WE OFFER</div>
+          <h2 className="section-title">Automated Safety Compliance</h2>
+          <p className="section-description">
+            Cutting-edge AI technology that ensures your workplace maintains the highest safety standards
+          </p>
+        </div>
+        
+        <div className="features-grid">
+          <FeatureCard 
+            icon="📸"
+            title="Real-Time Detection"
+            description="Instant PPE detection using advanced computer vision to identify helmets, vests, and safety gear in real-time."
+          />
+          <FeatureCard 
+            icon="📊"
+            title="Compliance Reporting"
+            description="Automated violation logging with comprehensive reports and analytics for better safety management."
+          />
+          <FeatureCard 
+            icon="🚨"
+            title="Instant Alerts"
+            description="Get immediate notifications when safety violations are detected, ensuring quick response times."
+          />
+          <FeatureCard 
+            icon="📱"
+            title="Mobile Integration"
+            description="Access from anywhere with our mobile-responsive platform. Monitor multiple sites simultaneously."
+          />
+          <FeatureCard 
+            icon="🔐"
+            title="Secure Database"
+            description="All violations and data are securely stored with Firebase, ensuring data integrity and privacy."
+          />
+          <FeatureCard 
+            icon="📈"
+            title="Data Analytics"
+            description="Gain insights with detailed analytics and trend reports to improve workplace safety protocols."
+          />
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="stats fade-in">
+        <div className="stats-grid">
+          <StatCard number="99.7%" label="Detection Accuracy" />
+          <StatCard number="24/7" label="Monitoring Available" />
+          <StatCard number="<2s" label="Processing Time" />
+          <StatCard number="100+" label="Sites Protected" />
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta fade-in" id="contact">
+        <h2 className="cta-title">Ready to Enhance Workplace Safety?</h2>
+        <p className="cta-description">
+          Join leading companies using WearAware to maintain the highest safety standards and protect their workforce.
+        </p>
+        <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>Get Started Today</button>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div>
+            <div className="footer-brand">🦺 WearAware</div>
+            <p className="footer-description">
+              Advanced AI-powered PPE detection system for modern workplace safety management. Built by safety professionals, for safety professionals.
+            </p>
+          </div>
+          
+          <div>
+            <h4 className="footer-title">Company</h4>
+            <ul className="footer-links">
+              <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="footer-title">Solutions</h4>
+            <ul className="footer-links">
+              <li><a href="#">Construction</a></li>
+              <li><a href="#">Manufacturing</a></li>
+              <li><a href="#">Warehousing</a></li>
+              <li><a href="#">Enterprise</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="footer-title">Support</h4>
+            <ul className="footer-links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="footer-bottom">
+          © 2026 WearAware. All rights reserved. | Built by Group 4 - BSIT2-07
+        </div>
+      </footer>
+    </div>
+  );
 }
 
-.landing-page {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  color: #1a1a1a;
+function FeatureCard({ icon, title, description }) {
+  return (
+    <div className="feature-card">
+      <div className="feature-icon">{icon}</div>
+      <h3 className="feature-title">{title}</h3>
+      <p className="feature-description">{description}</p>
+    </div>
+  );
 }
 
-/* Navbar */
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  padding: 1.5rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  z-index: 1000;
+function StatCard({ number, label }) {
+  return (
+    <div className="stat">
+      <div className="stat-number">{number}</div>
+      <div className="stat-label">{label}</div>
+    </div>
+  );
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.logo-icon {
-  font-size: 2rem;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #ff6b35;
-}
-
-/* Hero Section */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6rem;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076') center/cover no-repeat;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  text-align: center;
-  color: white;
-  max-width: 900px;
-  z-index: 1;
-}
-
-.hero-subtitle {
-  font-size: 0.9rem;
-  letter-spacing: 3px;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
-
-.hero-title {
-  font-size: 5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  letter-spacing: -2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero-description {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-  opacity: 0.95;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.btn {
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.btn-primary {
-  background: white;
-  color: #667eea;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: white;
-  border-color: white;
-}
-
-.btn-secondary:hover {
-  background: white;
-  color: #667eea;
-}
-
-/* Features Section */
-.features {
-  padding: 8rem 5%;
-  background: #ffffff;
-}
-
-.section-header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 5rem;
-}
-
-.section-subtitle {
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  font-weight: 600;
-  color: #667eea;
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  color: #1a1a1a;
-}
-
-.section-description {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #666;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.feature-card {
-  background: #f8f9fa;
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  border-color: #667eea;
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.feature-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
-}
-
-.feature-description {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #666;
-}
-
-/* Stats Section */
-.stats {
-  padding: 6rem 5%;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-              url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070') center/cover no-repeat fixed;
-  position: relative;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.stat {
-  text-align: center;
-  color: white;
-}
-
-.stat-number {
-  font-size: 4rem;
-  font-weight: 900;
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.stat-label {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  font-weight: 500;
-}
-
-/* CTA Section */
-.cta {
-  padding: 8rem 5%;
-  text-align: center;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: white;
-}
-
-.cta-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-}
-
-.cta-description {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.9;
-}
-
-/* Footer */
-.footer {
-  background: #0a0a0a;
-  color: white;
-  padding: 4rem 5% 2rem;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.footer-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.footer-description {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  opacity: 0.8;
-  max-width: 400px;
-}
-
-.footer-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 0.8rem;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.footer-links a:hover {
-  opacity: 1;
-  color: #667eea;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
-/* Fade-in Animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 3rem;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .cta-title {
-    font-size: 2rem;
-  }
-}
+export default LandingPage;
