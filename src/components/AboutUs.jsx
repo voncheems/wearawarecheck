@@ -171,3 +171,4 @@ function TeamMember({ name, role, description }) {
     </div>
   );
 }
+export default AboutUs;
