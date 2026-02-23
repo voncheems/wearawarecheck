@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './LandingPage.css';
 
-<<<<<<< HEAD
+
 function LandingPage({ setCurrentPage }) {
   useEffect(() => {
-=======
+
 function LandingPage() {
   useEffect(() => {
     // Navbar scroll effect
