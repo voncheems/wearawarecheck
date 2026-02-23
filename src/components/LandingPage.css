@@ -388,7 +388,7 @@
     font-size: 2rem;
   }
 }
-=======
+
 import React, { useEffect } from 'react';
 import './LandingPage.css';
 
