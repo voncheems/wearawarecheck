@@ -504,7 +504,7 @@ export default function LoginPage({ setCurrentPage }) {
 
                 <div className="login-card-footer">
                   Don't have an account?{' '}
-                  <a href="#">Contact your administrator</a>
+                  <button className="login-forgot">Contact your administrator</button>
                 </div>
               </form>
             </div>
