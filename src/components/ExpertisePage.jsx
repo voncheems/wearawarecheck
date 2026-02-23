@@ -121,10 +121,10 @@ function ExpertisePage({ setCurrentPage }) {
         </div>
 
         <ul className="nav-links">
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>GET IN TOUCH</a></li>
+          <li><button onClick={() => setCurrentPage('about')}>ABOUT US</button></li>
+          <li><button onClick={() => setCurrentPage('projects')}>OUR PROJECTS</button></li>
+          <li><button onClick={() => setCurrentPage('expertise')}>EXPERTISE</button></li>
+          <li><button onClick={() => setCurrentPage('contact')}>GET IN TOUCH</button></li>
         </ul>
       </nav>
 
@@ -140,7 +140,7 @@ function ExpertisePage({ setCurrentPage }) {
           </p>
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>GET STARTED</button>
-            <a href="#ep-areas" className="btn btn-secondary" onClick={(e) => handleSmoothScroll(e, '#ep-areas')}>EXPLORE</a>
+            <button className="btn btn-secondary" onClick={(e) => handleSmoothScroll(e, '#ep-areas')}>EXPLORE</button>
           </div>
         </div>
       </section>
@@ -196,28 +196,28 @@ function ExpertisePage({ setCurrentPage }) {
           <div>
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>About Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><button onClick={() => setCurrentPage('about')}>About Us</button></li>
+              <li><button onClick={() => {}}>Careers</button></li>
+              <li><button onClick={() => {}}>Contact</button></li>
+              <li><button onClick={() => {}}>Blog</button></li>
             </ul>
           </div>
           <div>
             <h4 className="footer-title">Solutions</h4>
             <ul className="footer-links">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Manufacturing</a></li>
-              <li><a href="#">Warehousing</a></li>
-              <li><a href="#">Enterprise</a></li>
+              <li><button onClick={() => {}}>Construction</button></li>
+              <li><button onClick={() => {}}>Manufacturing</button></li>
+              <li><button onClick={() => {}}>Warehousing</button></li>
+              <li><button onClick={() => {}}>Enterprise</button></li>
             </ul>
           </div>
           <div>
             <h4 className="footer-title">Support</h4>
             <ul className="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><button onClick={() => {}}>Documentation</button></li>
+              <li><button onClick={() => {}}>Help Center</button></li>
+              <li><button onClick={() => {}}>Privacy Policy</button></li>
+              <li><button onClick={() => {}}>Terms of Service</button></li>
             </ul>
           </div>
         </div>
@@ -234,7 +234,6 @@ function ExpertiseSection({ number, tag, title, description, bullets, icon, inde
   return (
     <section className={`ep-section fade-in ${isEven ? 'ep-section--white' : 'ep-section--gray'}`}>
       <div className="ep-section-inner">
-        {/* Left */}
         <div className="ep-section-left">
           <div className="ep-number">{number}</div>
           <div className="ep-tag">{tag}</div>
@@ -244,8 +243,6 @@ function ExpertiseSection({ number, tag, title, description, bullets, icon, inde
           <h2 className="ep-section-title">{title}</h2>
           <div className="ep-accent-bar" />
         </div>
-
-        {/* Right */}
         <div className="ep-section-right">
           <p className="ep-section-desc">{description}</p>
           <ul className="ep-bullets">
@@ -270,4 +267,5 @@ function StatCard({ number, label }) {
     </div>
   );
 }
+
 export default ExpertisePage;
