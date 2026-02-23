@@ -1,8 +1,26 @@
 import React, { useEffect } from 'react';
 import './LandingPage.css';
 
+<<<<<<< HEAD
 function LandingPage({ setCurrentPage }) {
   useEffect(() => {
+=======
+function LandingPage() {
+  useEffect(() => {
+    // Navbar scroll effect
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Scroll animation
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -100px 0px'
@@ -19,6 +37,11 @@ function LandingPage({ setCurrentPage }) {
     document.querySelectorAll('.fade-in').forEach(el => {
       observer.observe(el);
     });
+<<<<<<< HEAD
+=======
+
+    return () => window.removeEventListener('scroll', handleScroll);
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
   }, []);
 
   const handleSmoothScroll = (e, targetId) => {
@@ -36,6 +59,7 @@ function LandingPage({ setCurrentPage }) {
     <div className="landing-page">
       {/* Navigation */}
       <nav className="navbar">
+<<<<<<< HEAD
        <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
            <div className="logo-icon">🦺</div>
             <span>WearAware</span>
@@ -50,6 +74,21 @@ function LandingPage({ setCurrentPage }) {
       </nav>
 
       {/* Hero Section */}
+=======
+        <div className="logo">
+          <div className="logo-icon">🦺</div>
+          <span>WearAware</span>
+        </div>
+        <ul className="nav-links">
+          <li><a href="#about" onClick={(e) => handleSmoothScroll(e, '#about')}>ABOUT US</a></li>
+          <li><a href="#features" onClick={(e) => handleSmoothScroll(e, '#features')}>OUR PROJECTS</a></li>
+          <li><a href="#expertise" onClick={(e) => handleSmoothScroll(e, '#expertise')}>EXPERTISE</a></li>
+          <li><a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>GET IN TOUCH</a></li>
+        </ul>
+      </nav>
+
+        {/* Hero Section */}
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -59,7 +98,11 @@ function LandingPage({ setCurrentPage }) {
             Revolutionizing workplace safety with AI-powered PPE detection and real-time compliance monitoring for construction sites and industrial facilities.
           </p>
           <div className="hero-buttons">
+<<<<<<< HEAD
             <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>GET STARTED</button>
+=======
+            <a href="/login" className="btn btn-primary">GET STARTED</a>
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
             <a href="#features" className="btn btn-secondary" onClick={(e) => handleSmoothScroll(e, '#features')}>LEARN MORE</a>
           </div>
         </div>
@@ -125,7 +168,11 @@ function LandingPage({ setCurrentPage }) {
         <p className="cta-description">
           Join leading companies using WearAware to maintain the highest safety standards and protect their workforce.
         </p>
+<<<<<<< HEAD
         <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>Get Started Today</button>
+=======
+        <a href="/login" className="btn btn-primary">Get Started Today</a>
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
       </section>
 
       {/* Footer */}
@@ -141,7 +188,11 @@ function LandingPage({ setCurrentPage }) {
           <div>
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
+<<<<<<< HEAD
               <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>About Us</a></li>
+=======
+              <li><a href="#">About Us</a></li>
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
               <li><a href="#">Careers</a></li>
               <li><a href="#">Contact</a></li>
               <li><a href="#">Blog</a></li>
@@ -177,6 +228,10 @@ function LandingPage({ setCurrentPage }) {
   );
 }
 
+<<<<<<< HEAD
+=======
+// Feature Card Component
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
 function FeatureCard({ icon, title, description }) {
   return (
     <div className="feature-card">
@@ -187,6 +242,10 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
+<<<<<<< HEAD
+=======
+// Stat Card Component
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
 function StatCard({ number, label }) {
   return (
     <div className="stat">
@@ -196,4 +255,8 @@ function StatCard({ number, label }) {
   );
 }
 
+<<<<<<< HEAD
 export default LandingPage;
+=======
+export default LandingPage;
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d

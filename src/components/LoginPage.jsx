@@ -510,4 +510,8 @@ export default function LoginPage({ setCurrentPage }) {
       </div>
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d

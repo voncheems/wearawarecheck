@@ -317,4 +317,8 @@ function StatCard({ number, label }) {
   );
 }
 
+<<<<<<< HEAD
 export default ContactPage;
+=======
+export default ContactPage;
+>>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
