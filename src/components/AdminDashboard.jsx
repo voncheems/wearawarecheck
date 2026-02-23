@@ -452,7 +452,7 @@ const styles = `
   }
 `;
 
-const API = 'http://localhost:5000/api';
+const API = 'https://wearawarecheck-production.up.railway.app/api';
 
 function getAuthHeaders() {
   const token = localStorage.getItem('token');
@@ -617,7 +617,6 @@ export default function AdminDashboard({ setCurrentPage }) {
                 </div>
 
                 <div className="ad-grid">
-                  {/* Users preview */}
                   <div className="ad-panel">
                     <div className="ad-panel-header">
                       <div>
@@ -659,7 +658,6 @@ export default function AdminDashboard({ setCurrentPage }) {
                     </table>
                   </div>
 
-                  {/* Activity */}
                   <div className="ad-panel">
                     <div className="ad-panel-header">
                       <div>
