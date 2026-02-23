@@ -359,7 +359,7 @@ export default function LoginPage({ setCurrentPage }) {
     try {
       // Uses VITE_API_URL env variable — set to http://localhost:5000 locally
       // and your Railway backend URL on Vercel
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
       const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
