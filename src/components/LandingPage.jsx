@@ -3,7 +3,6 @@ import './LandingPage.css';
 
 function LandingPage({ setCurrentPage }) {
   useEffect(() => {
-    // Navbar scroll effect
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -15,23 +14,13 @@ function LandingPage({ setCurrentPage }) {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Scroll animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -40,31 +29,25 @@ function LandingPage({ setCurrentPage }) {
     e.preventDefault();
     const target = document.querySelector(targetId);
     if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   return (
     <div className="landing-page">
-      {/* Navigation */}
       <nav className="navbar">
         <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
           <div className="logo-icon">🦺</div>
           <span>WearAware</span>
         </div>
-
         <ul className="nav-links">
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>GET IN TOUCH</a></li>
+          <li><button onClick={() => setCurrentPage('about')}>ABOUT US</button></li>
+          <li><button onClick={() => setCurrentPage('projects')}>OUR PROJECTS</button></li>
+          <li><button onClick={() => setCurrentPage('expertise')}>EXPERTISE</button></li>
+          <li><button onClick={() => setCurrentPage('contact')}>GET IN TOUCH</button></li>
         </ul>
       </nav>
 
-      {/* Hero Section */}
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -80,7 +63,6 @@ function LandingPage({ setCurrentPage }) {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features fade-in" id="features">
         <div className="section-header">
           <div className="section-subtitle">WHAT WE OFFER</div>
@@ -89,42 +71,22 @@ function LandingPage({ setCurrentPage }) {
             Cutting-edge AI technology that ensures your workplace maintains the highest safety standards
           </p>
         </div>
-
         <div className="features-grid">
-          <FeatureCard
-            icon="📸"
-            title="Real-Time Detection"
-            description="Instant PPE detection using advanced computer vision to identify helmets, vests, and safety gear in real-time."
-          />
-          <FeatureCard
-            icon="📊"
-            title="Compliance Reporting"
-            description="Automated violation logging with comprehensive reports and analytics for better safety management."
-          />
-          <FeatureCard
-            icon="🚨"
-            title="Instant Alerts"
-            description="Get immediate notifications when safety violations are detected, ensuring quick response times."
-          />
-          <FeatureCard
-            icon="📱"
-            title="Mobile Integration"
-            description="Access from anywhere with our mobile-responsive platform. Monitor multiple sites simultaneously."
-          />
-          <FeatureCard
-            icon="🔐"
-            title="Secure Database"
-            description="All violations and data are securely stored with Firebase, ensuring data integrity and privacy."
-          />
-          <FeatureCard
-            icon="📈"
-            title="Data Analytics"
-            description="Gain insights with detailed analytics and trend reports to improve workplace safety protocols."
-          />
+          <FeatureCard icon="📸" title="Real-Time Detection"
+            description="Instant PPE detection using advanced computer vision to identify helmets, vests, and safety gear in real-time." />
+          <FeatureCard icon="📊" title="Compliance Reporting"
+            description="Automated violation logging with comprehensive reports and analytics for better safety management." />
+          <FeatureCard icon="🚨" title="Instant Alerts"
+            description="Get immediate notifications when safety violations are detected, ensuring quick response times." />
+          <FeatureCard icon="📱" title="Mobile Integration"
+            description="Access from anywhere with our mobile-responsive platform. Monitor multiple sites simultaneously." />
+          <FeatureCard icon="🔐" title="Secure Database"
+            description="All violations and data are securely stored with Firebase, ensuring data integrity and privacy." />
+          <FeatureCard icon="📈" title="Data Analytics"
+            description="Gain insights with detailed analytics and trend reports to improve workplace safety protocols." />
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="stats fade-in">
         <div className="stats-grid">
           <StatCard number="99.7%" label="Detection Accuracy" />
@@ -134,7 +96,6 @@ function LandingPage({ setCurrentPage }) {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta fade-in" id="contact">
         <h2 className="cta-title">Ready to Enhance Workplace Safety?</h2>
         <p className="cta-description">
@@ -143,7 +104,6 @@ function LandingPage({ setCurrentPage }) {
         <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>Get Started Today</button>
       </section>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div>
@@ -152,38 +112,34 @@ function LandingPage({ setCurrentPage }) {
               Advanced AI-powered PPE detection system for modern workplace safety management. Built by safety professionals, for safety professionals.
             </p>
           </div>
-
           <div>
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>About Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><button onClick={() => setCurrentPage('about')}>About Us</button></li>
+              <li><button onClick={() => {}}>Careers</button></li>
+              <li><button onClick={() => {}}>Contact</button></li>
+              <li><button onClick={() => {}}>Blog</button></li>
             </ul>
           </div>
-
           <div>
             <h4 className="footer-title">Solutions</h4>
             <ul className="footer-links">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Manufacturing</a></li>
-              <li><a href="#">Warehousing</a></li>
-              <li><a href="#">Enterprise</a></li>
+              <li><button onClick={() => {}}>Construction</button></li>
+              <li><button onClick={() => {}}>Manufacturing</button></li>
+              <li><button onClick={() => {}}>Warehousing</button></li>
+              <li><button onClick={() => {}}>Enterprise</button></li>
             </ul>
           </div>
-
           <div>
             <h4 className="footer-title">Support</h4>
             <ul className="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><button onClick={() => {}}>Documentation</button></li>
+              <li><button onClick={() => {}}>Help Center</button></li>
+              <li><button onClick={() => {}}>Privacy Policy</button></li>
+              <li><button onClick={() => {}}>Terms of Service</button></li>
             </ul>
           </div>
         </div>
-
         <div className="footer-bottom">
           © 2026 WearAware. All rights reserved. | Built by Group 4 - BSIT2-07
         </div>
@@ -192,7 +148,6 @@ function LandingPage({ setCurrentPage }) {
   );
 }
 
-// Feature Card Component
 function FeatureCard({ icon, title, description }) {
   return (
     <div className="feature-card">
@@ -203,7 +158,6 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
-// Stat Card Component
 function StatCard({ number, label }) {
   return (
     <div className="stat">
