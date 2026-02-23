@@ -72,11 +72,11 @@ function ContactPage({ setCurrentPage }) {
           <span>WearAware</span>
         </div>
 
-      <ul className="nav-links">
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>GET IN TOUCH</a></li>
+        <ul className="nav-links">
+          <li><button onClick={() => setCurrentPage('about')}>ABOUT US</button></li>
+          <li><button onClick={() => setCurrentPage('projects')}>OUR PROJECTS</button></li>
+          <li><button onClick={() => setCurrentPage('expertise')}>EXPERTISE</button></li>
+          <li><button onClick={() => setCurrentPage('contact')}>GET IN TOUCH</button></li>
         </ul>
       </nav>
 
@@ -114,7 +114,7 @@ function ContactPage({ setCurrentPage }) {
         </div>
       </section>
 
-      {/* Form + Map */}
+      {/* Form + Side Panel */}
       <section className="cp-form-section fade-in">
         <div className="cp-form-wrapper">
 
@@ -143,25 +143,15 @@ function ContactPage({ setCurrentPage }) {
                   <div className="cp-field">
                     <label htmlFor="name">Full Name *</label>
                     <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Juan dela Cruz"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
+                      id="name" name="name" type="text" placeholder="Juan dela Cruz"
+                      value={formData.name} onChange={handleChange} required
                     />
                   </div>
                   <div className="cp-field">
                     <label htmlFor="email">Email Address *</label>
                     <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="juan@company.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
+                      id="email" name="email" type="email" placeholder="juan@company.com"
+                      value={formData.email} onChange={handleChange} required
                     />
                   </div>
                 </div>
@@ -170,23 +160,13 @@ function ContactPage({ setCurrentPage }) {
                   <div className="cp-field">
                     <label htmlFor="company">Company / Organization</label>
                     <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      placeholder="ABC Construction Corp."
-                      value={formData.company}
-                      onChange={handleChange}
+                      id="company" name="company" type="text" placeholder="ABC Construction Corp."
+                      value={formData.company} onChange={handleChange}
                     />
                   </div>
                   <div className="cp-field">
                     <label htmlFor="subject">Subject *</label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                    >
+                    <select id="subject" name="subject" value={formData.subject} onChange={handleChange} required>
                       <option value="" disabled>Select a topic</option>
                       <option value="demo">Request a Demo</option>
                       <option value="pricing">Pricing Inquiry</option>
@@ -200,13 +180,9 @@ function ContactPage({ setCurrentPage }) {
                 <div className="cp-field">
                   <label htmlFor="message">Message *</label>
                   <textarea
-                    id="message"
-                    name="message"
-                    rows="6"
+                    id="message" name="message" rows="6"
                     placeholder="Tell us about your facility, your safety challenges, or anything else you'd like to discuss..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
+                    value={formData.message} onChange={handleChange} required
                   />
                 </div>
 
@@ -275,28 +251,28 @@ function ContactPage({ setCurrentPage }) {
           <div>
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>About Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><button onClick={() => setCurrentPage('about')}>About Us</button></li>
+              <li><button onClick={() => {}}>Careers</button></li>
+              <li><button onClick={() => {}}>Contact</button></li>
+              <li><button onClick={() => {}}>Blog</button></li>
             </ul>
           </div>
           <div>
             <h4 className="footer-title">Solutions</h4>
             <ul className="footer-links">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Manufacturing</a></li>
-              <li><a href="#">Warehousing</a></li>
-              <li><a href="#">Enterprise</a></li>
+              <li><button onClick={() => {}}>Construction</button></li>
+              <li><button onClick={() => {}}>Manufacturing</button></li>
+              <li><button onClick={() => {}}>Warehousing</button></li>
+              <li><button onClick={() => {}}>Enterprise</button></li>
             </ul>
           </div>
           <div>
             <h4 className="footer-title">Support</h4>
             <ul className="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><button onClick={() => {}}>Documentation</button></li>
+              <li><button onClick={() => {}}>Help Center</button></li>
+              <li><button onClick={() => {}}>Privacy Policy</button></li>
+              <li><button onClick={() => {}}>Terms of Service</button></li>
             </ul>
           </div>
         </div>
@@ -316,4 +292,5 @@ function StatCard({ number, label }) {
     </div>
   );
 }
+
 export default ContactPage;
