@@ -184,5 +184,3 @@ export default function OurProjects({ setCurrentPage }) {
     </div>
   );
 }
-}
-
