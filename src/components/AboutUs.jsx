@@ -3,7 +3,6 @@ import './AboutUs.css';
 
 function AboutUs({ setCurrentPage }) {
   useEffect(() => {
-    // Navbar scroll effect
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
       if (!navbar) return;
@@ -16,23 +15,13 @@ function AboutUs({ setCurrentPage }) {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Scroll animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -45,12 +34,12 @@ function AboutUs({ setCurrentPage }) {
           <div className="logo-icon">🦺</div>
           <span>WearAware</span>
         </div>
-        
-         <ul className="nav-links">
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>CONTACT</a></li>
+
+        <ul className="nav-links">
+          <li><button onClick={() => setCurrentPage('about')}>ABOUT US</button></li>
+          <li><button onClick={() => setCurrentPage('projects')}>OUR PROJECTS</button></li>
+          <li><button onClick={() => setCurrentPage('expertise')}>EXPERTISE</button></li>
+          <li><button onClick={() => setCurrentPage('contact')}>CONTACT</button></li>
         </ul>
       </nav>
 
@@ -59,7 +48,7 @@ function AboutUs({ setCurrentPage }) {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-subtitle">GROUP 4 - BSIT 2-07</div>
-          <h1 className="hero-title">MEET THE<br/>DEVELOPERS</h1>
+          <h1 className="hero-title">MEET THE<br />DEVELOPERS</h1>
           <p className="hero-description">
             Six passionate IT students bringing AI-powered safety solutions to life
           </p>
@@ -71,23 +60,21 @@ function AboutUs({ setCurrentPage }) {
         <div className="section-header">
           <div className="section-subtitle">THE TEAM</div>
           <h2 className="section-title">Group 4 Members</h2>
-          <p className="section-description">
-            BSIT 2-07 • Capstone Project 2025
-          </p>
+          <p className="section-description">BSIT 2-07 • Capstone Project 2025</p>
         </div>
-        
+
         <div className="team-grid">
-          <TeamMember 
+          <TeamMember
             name="Member 1"
             role="Project Lead"
             description="Responsible for project coordination, system architecture, and ensuring all components work together seamlessly."
           />
-          <TeamMember 
+          <TeamMember
             name="Member 2"
             role="AI Developer"
             description="Building and training the machine learning models for PPE detection using computer vision technology."
           />
-          <TeamMember 
+          <TeamMember
             name="Member 3"
             role="Frontend Developer"
             description="Creating the user interface and designing the user experience for the web application."
@@ -101,12 +88,12 @@ function AboutUs({ setCurrentPage }) {
           <div className="section-subtitle">ABOUT THE PROJECT</div>
           <h2 className="section-title">WearAware System</h2>
         </div>
-        
+
         <div className="project-content">
           <div className="project-card">
             <h3>🎯 Project Goal</h3>
             <p>
-              Develop an AI-powered PPE detection system that can automatically identify and log safety violations 
+              Develop an AI-powered PPE detection system that can automatically identify and log safety violations
               in real-time, helping construction sites and industrial facilities maintain compliance and protect workers.
             </p>
           </div>
@@ -137,8 +124,8 @@ function AboutUs({ setCurrentPage }) {
           <div className="project-card">
             <h3>📅 Project Timeline</h3>
             <p>
-              <strong>Start Date:</strong> August 2024<br/>
-              <strong>Expected Completion:</strong> May 2025<br/>
+              <strong>Start Date:</strong> August 2024<br />
+              <strong>Expected Completion:</strong> May 2025<br />
               <strong>Course:</strong> Capstone Project - BSIT 2-07
             </p>
           </div>
@@ -149,12 +136,8 @@ function AboutUs({ setCurrentPage }) {
       <footer className="footer">
         <div className="footer-simple">
           <div className="footer-brand">🦺 WearAware</div>
-          <p className="footer-description">
-            A Capstone Project by Group 4 - BSIT 2-07
-          </p>
-          <div className="footer-bottom">
-            © 2026 WearAware. Built with ❤️ by Group 4
-          </div>
+          <p className="footer-description">A Capstone Project by Group 4 - BSIT 2-07</p>
+          <div className="footer-bottom">© 2026 WearAware. Built with ❤️ by Group 4</div>
         </div>
       </footer>
     </div>
@@ -171,4 +154,5 @@ function TeamMember({ name, role, description }) {
     </div>
   );
 }
+
 export default AboutUs;
