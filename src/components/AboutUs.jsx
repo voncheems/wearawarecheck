@@ -171,9 +171,3 @@ function TeamMember({ name, role, description }) {
     </div>
   );
 }
-
-<<<<<<< HEAD
-export default AboutUs;
-=======
-export default AboutUs;
->>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
