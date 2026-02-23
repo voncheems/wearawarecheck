@@ -8,10 +8,9 @@ const app = express();
 
 // ── Middleware ──────────────────────────────────────────────
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL,
-    'http://localhost:3000'
-  ].filter(Boolean),
+  origin: function(origin, callback) {
+    callback(null, true);
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -64,8 +63,6 @@ app.get('/', (req, res) => {
 
 // ══════════════════════════════════════════════════════════════
 //  POST /api/auth/login
-//  Body: { email, password }
-//  Returns: { token, user: { id, full_name, email, role } }
 // ══════════════════════════════════════════════════════════════
 app.post('/api/auth/login', async (req, res) => {
   const { email, password } = req.body;
@@ -117,7 +114,7 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 // ══════════════════════════════════════════════════════════════
-//  GET /api/auth/me  — verify token & return current user
+//  GET /api/auth/me
 // ══════════════════════════════════════════════════════════════
 app.get('/api/auth/me', requireAuth, (req, res) => {
   res.json({ user: req.user });
@@ -141,8 +138,7 @@ app.get('/api/users', requireAuth, requireRole('admin'), async (req, res) => {
 });
 
 // ══════════════════════════════════════════════════════════════
-//  POST /api/users  — admin only — create a new user
-//  Body: { full_name, email, password, role }
+//  POST /api/users  — admin only
 // ══════════════════════════════════════════════════════════════
 app.post('/api/users', requireAuth, requireRole('admin'), async (req, res) => {
   const { full_name, email, password, role } = req.body;
