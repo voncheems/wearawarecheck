@@ -94,13 +94,10 @@ export default function OurProjects({ setCurrentPage }) {
           <ul className="nav-links">
                 <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
                 <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
-<<<<<<< HEAD
                 <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
                 <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>GET IN TOUCH</a></li>
-=======
                 <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>EXPERTISE</a></li>
                 <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>GET IN TOUCH</a></li>
->>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
             </ul>
         </ul>
       </nav>
@@ -186,8 +183,6 @@ export default function OurProjects({ setCurrentPage }) {
 
     </div>
   );
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
+
