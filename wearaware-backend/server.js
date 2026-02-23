@@ -7,25 +7,26 @@ const { Pool } = require('pg');
 const app = express();
 
 // ── Middleware ──────────────────────────────────────────────
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:3000' }));
 app.use(express.json());
 
 // ── PostgreSQL ──────────────────────────────────────────────
 const pool = new Pool({
-  host:     'localhost',
-  port:     5432,
-  database: 'wearaware',
-  user:     'postgres',     // ← your PostgreSQL username
-  password: '123123', // ← your PostgreSQL password
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
 });
 
 pool.connect((err) => {
-  if (err) console.error('❌ PostgreSQL connection failed:', err.message);
-  else     console.log('✅ Connected to PostgreSQL');
+  if (err) {
+    console.error('❌ PostgreSQL connection failed:', err.message);
+    console.error('Stack:', err.stack);
+  } else {
+    console.log('✅ Connected to PostgreSQL');
+  }
 });
 
-// ── JWT Secret (move to .env in production) ─────────────────
-const JWT_SECRET = 'wearaware_secret_change_me';
+// ── JWT Secret ──────────────────────────────────────────────
+const JWT_SECRET = process.env.JWT_SECRET || 'wearaware_secret_change_me';
 
 // ── Auth Middleware ─────────────────────────────────────────
 function requireAuth(req, res, next) {
