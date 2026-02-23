@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
 import './LandingPage.css';
 
-
 function LandingPage({ setCurrentPage }) {
-  useEffect(() => {
-
-function LandingPage() {
   useEffect(() => {
     // Navbar scroll effect
     const handleScroll = () => {
@@ -55,11 +51,11 @@ function LandingPage() {
     <div className="landing-page">
       {/* Navigation */}
       <nav className="navbar">
-       <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
-           <div className="logo-icon">🦺</div>
-            <span>WearAware</span>
+        <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
+          <div className="logo-icon">🦺</div>
+          <span>WearAware</span>
         </div>
-        
+
         <ul className="nav-links">
           <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
           <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
@@ -69,31 +65,17 @@ function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-        <div className="logo">
-          <div className="logo-icon">🦺</div>
-          <span>WearAware</span>
-        </div>
-        <ul className="nav-links">
-          <li><a href="#about" onClick={(e) => handleSmoothScroll(e, '#about')}>ABOUT US</a></li>
-          <li><a href="#features" onClick={(e) => handleSmoothScroll(e, '#features')}>OUR PROJECTS</a></li>
-          <li><a href="#expertise" onClick={(e) => handleSmoothScroll(e, '#expertise')}>EXPERTISE</a></li>
-          <li><a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>GET IN TOUCH</a></li>
-        </ul>
-      </nav>
-
-        {/* Hero Section */}
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-subtitle">BUILT AT THE SPEED OF SAFETY</div>
-          <h1 className="hero-title">WORKPLACE'S<br/>TOP NOTCH<br/>SAFETY MONITOR</h1>
+          <h1 className="hero-title">WORKPLACE'S<br />TOP NOTCH<br />SAFETY MONITOR</h1>
           <p className="hero-description">
             Revolutionizing workplace safety with AI-powered PPE detection and real-time compliance monitoring for construction sites and industrial facilities.
           </p>
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>GET STARTED</button>
-            <a href="/login" className="btn btn-primary">GET STARTED</a>
-            <a href="#features" className="btn btn-secondary" onClick={(e) => handleSmoothScroll(e, '#features')}>LEARN MORE</a>
+            <button className="btn btn-secondary" onClick={(e) => handleSmoothScroll(e, '#features')}>LEARN MORE</button>
           </div>
         </div>
       </section>
@@ -107,34 +89,34 @@ function LandingPage() {
             Cutting-edge AI technology that ensures your workplace maintains the highest safety standards
           </p>
         </div>
-        
+
         <div className="features-grid">
-          <FeatureCard 
+          <FeatureCard
             icon="📸"
             title="Real-Time Detection"
             description="Instant PPE detection using advanced computer vision to identify helmets, vests, and safety gear in real-time."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="📊"
             title="Compliance Reporting"
             description="Automated violation logging with comprehensive reports and analytics for better safety management."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="🚨"
             title="Instant Alerts"
             description="Get immediate notifications when safety violations are detected, ensuring quick response times."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="📱"
             title="Mobile Integration"
             description="Access from anywhere with our mobile-responsive platform. Monitor multiple sites simultaneously."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="🔐"
             title="Secure Database"
             description="All violations and data are securely stored with Firebase, ensuring data integrity and privacy."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="📈"
             title="Data Analytics"
             description="Gain insights with detailed analytics and trend reports to improve workplace safety protocols."
@@ -159,7 +141,6 @@ function LandingPage() {
           Join leading companies using WearAware to maintain the highest safety standards and protect their workforce.
         </p>
         <button className="btn btn-primary" onClick={() => setCurrentPage('login')}>Get Started Today</button>
-        <a href="/login" className="btn btn-primary">Get Started Today</a>
       </section>
 
       {/* Footer */}
@@ -171,18 +152,17 @@ function LandingPage() {
               Advanced AI-powered PPE detection system for modern workplace safety management. Built by safety professionals, for safety professionals.
             </p>
           </div>
-          
+
           <div>
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
               <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>About Us</a></li>
-              <li><a href="#">About Us</a></li>
               <li><a href="#">Careers</a></li>
               <li><a href="#">Contact</a></li>
               <li><a href="#">Blog</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="footer-title">Solutions</h4>
             <ul className="footer-links">
@@ -192,7 +172,7 @@ function LandingPage() {
               <li><a href="#">Enterprise</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="footer-title">Support</h4>
             <ul className="footer-links">
@@ -203,7 +183,7 @@ function LandingPage() {
             </ul>
           </div>
         </div>
-        
+
         <div className="footer-bottom">
           © 2026 WearAware. All rights reserved. | Built by Group 4 - BSIT2-07
         </div>
@@ -223,7 +203,6 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
-
 // Stat Card Component
 function StatCard({ number, label }) {
   return (
@@ -233,3 +212,5 @@ function StatCard({ number, label }) {
     </div>
   );
 }
+
+export default LandingPage;
