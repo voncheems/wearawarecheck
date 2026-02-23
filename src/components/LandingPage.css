@@ -587,4 +587,4 @@ function StatCard({ number, label }) {
   );
 }
 
-export default LandingPage;
+export default LandingPage
