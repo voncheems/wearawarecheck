@@ -316,3 +316,4 @@ function StatCard({ number, label }) {
     </div>
   );
 }
+export default ContactPage;
