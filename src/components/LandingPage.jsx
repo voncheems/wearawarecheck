@@ -254,9 +254,3 @@ function StatCard({ number, label }) {
     </div>
   );
 }
-
-<<<<<<< HEAD
-export default LandingPage;
-=======
-export default LandingPage;
->>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
