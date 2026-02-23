@@ -33,7 +33,6 @@ pool.connect((err) => {
 
 // ── JWT Secret ──────────────────────────────────────────────
 const JWT_SECRET = process.env.JWT_SECRET || 'wearaware_secret_change_me';
-FRONTEND_URL = https://wearawarecheck-bh4sc5ctz-voncheems-projects.vercel.app
 
 // ── Auth Middleware ─────────────────────────────────────────
 function requireAuth(req, res, next) {
