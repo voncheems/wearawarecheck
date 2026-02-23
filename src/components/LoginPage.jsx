@@ -357,7 +357,11 @@ export default function LoginPage({ setCurrentPage }) {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      // Uses VITE_API_URL env variable — set to http://localhost:5000 locally
+      // and your Railway backend URL on Vercel
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -510,8 +514,4 @@ export default function LoginPage({ setCurrentPage }) {
       </div>
     </>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 76645d34092e9c76d60a1ab8306014a78b66862d
