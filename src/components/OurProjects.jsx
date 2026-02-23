@@ -67,7 +67,6 @@ export default function OurProjects({ setCurrentPage }) {
   useEffect(() => {
     setTimeout(() => setVisible(true), 50);
 
-    // Scroll animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -91,14 +90,10 @@ export default function OurProjects({ setCurrentPage }) {
           <span>WearAware</span>
         </div>
         <ul className="nav-links">
-          <ul className="nav-links">
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }}>ABOUT US</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('projects'); }}>OUR PROJECTS</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('expertise'); }}>EXPERTISE</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }}>GET IN TOUCH</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>EXPERTISE</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('landing'); }}>GET IN TOUCH</a></li>
-            </ul>
+          <li><button onClick={() => setCurrentPage('about')}>ABOUT US</button></li>
+          <li><button onClick={() => setCurrentPage('projects')}>OUR PROJECTS</button></li>
+          <li><button onClick={() => setCurrentPage('expertise')}>EXPERTISE</button></li>
+          <li><button onClick={() => setCurrentPage('contact')}>GET IN TOUCH</button></li>
         </ul>
       </nav>
 
@@ -125,7 +120,6 @@ export default function OurProjects({ setCurrentPage }) {
           </p>
         </div>
 
-        {/* Filter tabs */}
         <div className="projects-filters">
           {categories.map(cat => (
             <button
@@ -138,7 +132,6 @@ export default function OurProjects({ setCurrentPage }) {
           ))}
         </div>
 
-        {/* Cards grid */}
         <div className="projects-grid">
           {filtered.map(project => (
             <div className="project-card" key={project.id}>
@@ -172,12 +165,8 @@ export default function OurProjects({ setCurrentPage }) {
       <footer className="footer">
         <div className="footer-simple">
           <div className="footer-brand">🦺 WearAware</div>
-          <p className="footer-description">
-            A Capstone Project by Group 4 - BSIT 2-07
-          </p>
-          <div className="footer-bottom">
-            © 2026 WearAware. Built with ❤️ by Group 4
-          </div>
+          <p className="footer-description">A Capstone Project by Group 4 - BSIT 2-07</p>
+          <div className="footer-bottom">© 2026 WearAware. Built with ❤️ by Group 4</div>
         </div>
       </footer>
 
